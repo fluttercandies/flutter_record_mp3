@@ -1,7 +1,8 @@
 # Record Mp3
 [![pub package](https://img.shields.io/pub/v/recorder_mp3.svg)](https://pub.dartlang.org/packages/recorder_mp3)
-  #####Record an MP3 using the native API
- ## Usage
+
+##### Record an MP3 using the native API
+## Usage
  
  
 ### iOS
