@@ -1,0 +1,16 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  package="com.plugin.record_mp3">
+
+    <!--读取权限-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!--写权限-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!--保持进程在休眠时从屏幕消失-->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!--允许程序录制音频-->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!--内外置sd卡写权限-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!--允许程序修改全局音频设置-->
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+</manifest>
