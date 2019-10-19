@@ -1,1 +1,3 @@
 *.dart linguist-language=Flutter
+*.java linguist-language=Flutter
+*.swift linguist-language=Flutter
