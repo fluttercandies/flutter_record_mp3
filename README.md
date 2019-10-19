@@ -11,7 +11,7 @@ Make sure you add the following key to Info.plist for iOS
 <string>xxxxxx</string>
 ```
  
-###Example
+### Example
 ```
 import 'package:record_mp3/record_mp3.dart';
 
