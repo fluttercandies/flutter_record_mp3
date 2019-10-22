@@ -1,8 +1,8 @@
 name: record_mp3
 description: 使用原生实现的mp3录音插件
 version: 1.0.0
-author: shingohu
-homepage:
+author: shingohu<shingohu@163.com>
+homepage: https://github.com/shingohu/flutter_record_mp3
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
