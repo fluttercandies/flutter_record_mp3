@@ -1,2 +1,2 @@
-*.dart linguist-language=dart
-*.* linguist-language=dart
+*.dart linguist-language=Flutter
+*.* linguist-language=Flutter
