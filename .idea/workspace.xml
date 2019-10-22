@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="215c8131-a3c0-4113-a3fa-c7c542538bd6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/record_mp3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/record_mp3/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/record_mp3/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/record_mp3/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/record_mp3.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/record_mp3.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
@@ -25,29 +30,38 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="73EBB18510222496" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pubspec.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="93">
-              <caret line="3" column="34" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
+            <state relative-caret-position="62">
+              <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
+        <entry file="file://$PROJECT_DIR$/lib/record_mp3.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="682">
-              <caret line="22" column="6" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
+            <state relative-caret-position="1269">
+              <caret line="84" column="3" selection-start-line="84" selection-start-column="3" selection-end-line="84" selection-end-column="3" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="62">
-              <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="35" />
+            <state relative-caret-position="155">
+              <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/LICENSE">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="155">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
@@ -69,13 +83,13 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/example/pubspec.yaml" />
-        <option value="$PROJECT_DIR$/lib/record_mp3.dart" />
-        <option value="$PROJECT_DIR$/CHANGELOG.md" />
         <option value="$PROJECT_DIR$/LICENSE" />
         <option value="$PROJECT_DIR$/example/lib/main.dart" />
         <option value="$PROJECT_DIR$/example/README.md" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/lib/record_mp3.dart" />
         <option value="$PROJECT_DIR$/pubspec.yaml" />
+        <option value="$PROJECT_DIR$/CHANGELOG.md" />
       </list>
     </option>
   </component>
@@ -98,6 +112,11 @@
               <item name="record_mp3" type="b2602c69:ProjectViewProjectNode" />
               <item name="record_mp3" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="record_mp3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="record_mp3" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -108,6 +127,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="AnalyzeApkAction.lastApkPath" value="$USER_HOME$/Downloads/flutter_filereader-master/example/build/app/outputs/apk/debug/app-debug.apk" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="editor.config.ad.shown" value="true" />
@@ -159,10 +179,10 @@
       <window_info anchor="bottom" id="VersionChecker" order="3" />
       <window_info anchor="bottom" id="TODO" order="4" />
       <window_info anchor="bottom" id="Android Profiler" order="5" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Logcat" order="6" />
+      <window_info anchor="bottom" id="Logcat" order="6" sideWeight="0.4994618" weight="0.32941177" />
       <window_info anchor="bottom" id="Debug" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49784714" visible="true" weight="0.15721925" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50215286" side_tool="true" visible="true" weight="0.15721925" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.78848225" visible="true" weight="0.04812834" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.21151777" side_tool="true" visible="true" weight="0.04812834" />
       <window_info anchor="bottom" id="Flutter Performance" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.5657754" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.47165775" />
@@ -261,20 +281,6 @@
     <entry file="file://$USER_HOME$/Documents/AndroidStudio/DeviceExplorer/huawei-lnd_al30-73EBB18510222496/data/data/com.plugin.record_mp3_example/code_cache/flutter_engine/b863200c37df4ed378042de11c4e9ff34e4e58c9/skia/4b567cd679ab964b5f6281a67a96c694c950f597/CAZAAAACAAAAAAAAAAAACAAAAAJQAAIADQABIAAPAALQAAAAAAABIAA2AAAAAAAAAAAAAAACAAAAAKAAMMAA">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/record_mp3.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="91" column="1" selection-start-line="91" selection-start-column="1" selection-end-line="91" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LICENSE">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/example/lib/main.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="477">
@@ -292,24 +298,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/Downloads/flutter_filereader-master/example/build/app/outputs/apk/debug/app-debug.apk">
+      <provider selected="true" editor-type-id="apk-viewer" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="682">
-          <caret line="22" column="6" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
+        <state relative-caret-position="93">
+          <caret line="3" column="49" selection-start-line="3" selection-start-column="49" selection-end-line="3" selection-end-column="49" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
+    <entry file="file://$PROJECT_DIR$/LICENSE">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="62">
-          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="35" />
+        <state relative-caret-position="155">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/record_mp3.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1269">
+          <caret line="84" column="3" selection-start-line="84" selection-start-column="3" selection-end-line="84" selection-end-column="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pubspec.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="3" column="34" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
+        <state relative-caret-position="62">
+          <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
         </state>
       </provider>
     </entry>

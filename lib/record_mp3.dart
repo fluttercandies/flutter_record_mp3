@@ -13,7 +13,7 @@ class RecordMp3 {
 
   MethodChannel _channel;
 
-  //record fail callback
+  ///record fail callback
   Function(RecordErrorType) _onRecordError;
 
   RecordMp3._() {
@@ -21,7 +21,7 @@ class RecordMp3 {
     _channel.setMethodCallHandler(_methodCallHandler);
   }
 
-  //record fail handler from native
+  ///record fail handler from native
   Future<dynamic> _methodCallHandler(MethodCall call) async {
     if (call.method == "onRecordError") {
       _status = RecordStatus.ERROR;
@@ -42,7 +42,7 @@ class RecordMp3 {
     }
   }
 
-  //start record
+  ///start record
   bool start(String path, Function onRecordError) {
     _onRecordError = onRecordError;
     _status = RecordStatus.RECORDING;
@@ -50,7 +50,7 @@ class RecordMp3 {
     return true;
   }
 
-  //pause record
+  ///pause record
   bool pause() {
     if (_status == RecordStatus.RECORDING) {
       _status = RecordStatus.PAUSE;
@@ -60,7 +60,7 @@ class RecordMp3 {
     return false;
   }
 
-  //stop record
+  ///stop record
   bool stop() {
     if (_status == RecordStatus.RECORDING || _status == RecordStatus.PAUSE) {
       _onRecordError = null;
@@ -71,7 +71,7 @@ class RecordMp3 {
     return false;
   }
 
-  //resume record
+  ///resume record
   bool resume() {
     if (_status == RecordStatus.PAUSE) {
       _status = RecordStatus.RECORDING;
@@ -82,7 +82,7 @@ class RecordMp3 {
   }
 }
 
-//record status
+///record status
 enum RecordStatus {
   IDEL,
   RECORDING,
