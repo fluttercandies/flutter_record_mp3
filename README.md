@@ -2,6 +2,17 @@
 [![pub package](https://img.shields.io/pub/v/record_mp3.svg)](https://pub.dartlang.org/packages/record_mp3)
 
 ##### Record an MP3 using the platform native API
+
+## Depend on it
+Add this to your package's pubspec.yaml file:
+
+```
+dependencies:
+  record_mp3: ^1.0.0+1
+```
+
+
+
 ## Usage
  
  
