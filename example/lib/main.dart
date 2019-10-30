@@ -83,19 +83,23 @@ class _MyAppState extends State<MyApp> {
             padding: const EdgeInsets.only(top: 20.0),
             child: Text(
               statusText,
-              style: TextStyle(color: Colors.red),
+              style: TextStyle(color: Colors.red, fontSize: 20),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 20.0),
-            child: GestureDetector(
-              onTap: () {
-                play();
-              },
+          GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: () {
+              play();
+            },
+            child: Container(
+              margin: EdgeInsets.only(top: 30),
+              alignment: AlignmentDirectional.center,
+              width: 100,
+              height: 50,
               child: RecordMp3.instance.status == RecordStatus.COMPLETE
                   ? Text(
                       "播放",
-                      style: TextStyle(color: Colors.red),
+                      style: TextStyle(color: Colors.red, fontSize: 20),
                     )
                   : Container(),
             ),
