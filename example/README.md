@@ -2,14 +2,14 @@
 
 Demonstrates how to use the record_mp3 plugin.
 
- ###Example
+ ### Example
 ```
 import 'package:record_mp3/record_mp3.dart';
 
 //start record 
 RecordMp3.instance.start(recordFilePath, (type) {
        // record fail callback
-      });
+});
 	  
 //pause record
 RecordMp3.instance.pause();
@@ -17,21 +17,12 @@ RecordMp3.instance.pause();
 //resume record
 RecordMp3.instance.resume();
 
-//stop record 
+
+//complete record and export a record file
 RecordMp3.instance.stop();
+
 
 ```
 
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

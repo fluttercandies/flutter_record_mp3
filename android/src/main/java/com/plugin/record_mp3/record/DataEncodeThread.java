@@ -68,7 +68,6 @@ public class DataEncodeThread extends Thread implements AudioRecord.OnRecordPosi
                 }
             }
             if (msg.what == RecordMsg.MSG_IO_EXCEPTION) {
-                deleteFile();
                 if (listener != null)
                     listener.onIOExecption();
             }
@@ -148,7 +147,7 @@ public class DataEncodeThread extends Thread implements AudioRecord.OnRecordPosi
                     mFileOutputStream.write(mMp3Buffer, 0, encodedSize);
                 } catch (IOException e) {
                     mHandler.sendEmptyMessage(RecordMsg.MSG_IO_EXCEPTION);
-                    Log.e("record", "写入失败");
+                    Log.e("RecordMp3", "write exception");
                 }
             }
             return readSize;
@@ -173,7 +172,7 @@ public class DataEncodeThread extends Thread implements AudioRecord.OnRecordPosi
                     try {
                         mFileOutputStream.close();
                     } catch (IOException e) {
-                        Log.e("record", "写入失败");
+                        Log.e("RecordMp3", "write exception");
                     }
                 }
                 LameUtil.close();

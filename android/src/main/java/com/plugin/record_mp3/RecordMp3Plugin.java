@@ -1,7 +1,5 @@
 package com.plugin.record_mp3;
 
-import android.content.Context;
-
 import com.plugin.record_mp3.record.MP3Recorder;
 import com.plugin.record_mp3.record.RecordMsg;
 import com.plugin.record_mp3.record.RecordStatus;
@@ -24,7 +22,6 @@ public class RecordMp3Plugin implements MethodCallHandler {
     private MethodChannel methodChannel;
 
     private MP3Recorder recorder;
-    private Context context;
     private RecordListener listener;
 
     /**
@@ -54,7 +51,6 @@ public class RecordMp3Plugin implements MethodCallHandler {
     }
 
     private RecordMp3Plugin(Registrar registrar) {
-        this.context = registrar.context();
         methodChannel = new MethodChannel(registrar.messenger(), "record_mp3");
         methodChannel.setMethodCallHandler(this);
 
@@ -119,15 +115,16 @@ public class RecordMp3Plugin implements MethodCallHandler {
         }
     }
 
-    //停止录音 并输出录音文件
+    //停止录音,并输出录音文件
     private void onStopRecord() {
         if (recorder != null) {
             recorder.stop();
+            recorder = null;
         }
     }
 
     private void onErrorCallBack(int tag, String msg) {
-        Log.d("RecordMp3Plugin", "error = " + msg);
+        Log.d("RecordMp3", "error = " + msg);
         methodChannel.invokeMethod("onRecordError", tag, new Result() {
             @Override
             public void success(Object o) {

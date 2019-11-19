@@ -36,7 +36,8 @@ lame_t lame;
     lame_set_quality(lame, 2);
     lame_init_params(lame);
     
-    while (true) {
+    BOOL flag  = true ;
+    while (flag) {
         NSData *audioData = nil;
         // @synchronized 的作用是创建一个互斥锁，保证此时没有其它线程对self对象进行修改。这个是objective-c的一个锁定令牌，防止self对象在同一时间内被其它线程访问，起到线程的保护作用。 一般在公用变量的时候使用，如单例模式或者操作类的static变量中使
         @synchronized(_recordQueue){
@@ -61,11 +62,12 @@ lame_t lame;
                     [handle writeData:piece];
                 }
             } @catch (NSException *exception) {
-//                MyLog(@"exception = %@", exception);
+                NSLog(@"exception = %@", exception);
                 if(!_setToStopped) {
                     if( _onRecordError != nil) {
                         //IO_EXCEPTION
                         _onRecordError(15);
+                        flag = false;
                     }
                 }
             } @finally {
@@ -79,20 +81,14 @@ lame_t lame;
             }
         }
     }
+    NSLog(@"结束录音,输出文件");
     [handle closeFile];
     lame_close(lame);
-    NSLog(@"结束本次录音%@",_currentMp3File);
-    if(!_setToStopped){
-        [ self removeCurrentMp3File ];
-    }
-    
 }
--(void)removeCurrentMp3File {
-    if(_currentMp3File){
-       [[NSFileManager defaultManager] removeItemAtPath:_currentMp3File error:nil];
-        NSLog(@"非正常停止情况下删除文件");
-    }
-}
+
+
+
+
 
 
 @end

@@ -15,6 +15,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   String statusText = "";
+  bool isComplete = false;
 
   @override
   Widget build(BuildContext context) {
@@ -27,55 +28,58 @@ class _MyAppState extends State<MyApp> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              GestureDetector(
-                child: Container(
-                  width: 120.0,
-                  height: 48.0,
-                  decoration: BoxDecoration(color: Colors.red.shade300),
-                  child: Center(
-                    child: Text(
-                      'start',
-                      style: TextStyle(color: Colors.white),
+              Expanded(
+                child: GestureDetector(
+                  child: Container(
+                    height: 48.0,
+                    decoration: BoxDecoration(color: Colors.red.shade300),
+                    child: Center(
+                      child: Text(
+                        'start',
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
                   ),
+                  onTap: () async {
+                    startRecord();
+                  },
                 ),
-                onTap: () async {
-                  startRecord();
-                },
               ),
-              GestureDetector(
-                child: Container(
-                  width: 120.0,
-                  height: 48.0,
-                  decoration: BoxDecoration(color: Colors.blue.shade300),
-                  child: Center(
-                    child: Text(
-                      RecordMp3.instance.status == RecordStatus.PAUSE
-                          ? 'resume'
-                          : 'pause',
-                      style: TextStyle(color: Colors.white),
+              Expanded(
+                child: GestureDetector(
+                  child: Container(
+                    height: 48.0,
+                    decoration: BoxDecoration(color: Colors.blue.shade300),
+                    child: Center(
+                      child: Text(
+                        RecordMp3.instance.status == RecordStatus.PAUSE
+                            ? 'resume'
+                            : 'pause',
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
                   ),
+                  onTap: () {
+                    pauseRecord();
+                  },
                 ),
-                onTap: () {
-                  pauseRecord();
-                },
               ),
-              GestureDetector(
-                child: Container(
-                  width: 120.0,
-                  height: 48.0,
-                  decoration: BoxDecoration(color: Colors.green.shade300),
-                  child: Center(
-                    child: Text(
-                      'stop',
-                      style: TextStyle(color: Colors.white),
+              Expanded(
+                child: GestureDetector(
+                  child: Container(
+                    height: 48.0,
+                    decoration: BoxDecoration(color: Colors.green.shade300),
+                    child: Center(
+                      child: Text(
+                        'stop',
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
                   ),
+                  onTap: () {
+                    stopRecord();
+                  },
                 ),
-                onTap: () {
-                  stopRecord();
-                },
               ),
             ],
           ),
@@ -96,7 +100,7 @@ class _MyAppState extends State<MyApp> {
               alignment: AlignmentDirectional.center,
               width: 100,
               height: 50,
-              child: RecordMp3.instance.status == RecordStatus.COMPLETE
+              child: isComplete && recordFilePath != null
                   ? Text(
                       "播放",
                       style: TextStyle(color: Colors.red, fontSize: 20),
@@ -122,9 +126,9 @@ class _MyAppState extends State<MyApp> {
     if (hasPermission) {
       statusText = "正在录音中...";
       recordFilePath = await getFilePath();
+      isComplete = false;
       RecordMp3.instance.start(recordFilePath, (type) {
-        statusText = "录音失败";
-        print(type);
+        statusText = "录音失败--->$type";
         setState(() {});
       });
     } else {
@@ -153,6 +157,7 @@ class _MyAppState extends State<MyApp> {
     bool s = RecordMp3.instance.stop();
     if (s) {
       statusText = "录音已完成";
+      isComplete = true;
       setState(() {});
     }
   }
@@ -168,7 +173,7 @@ class _MyAppState extends State<MyApp> {
   String recordFilePath;
 
   void play() {
-    if (recordFilePath != null) {
+    if (recordFilePath != null && File(recordFilePath).existsSync()) {
       AudioPlayer audioPlayer = AudioPlayer();
       audioPlayer.play(recordFilePath, isLocal: true);
     }

@@ -32,15 +32,15 @@
 }
 
 - (void)start {
-    [self breaekRecord];
-   // [recordingQueue removeAllObjects];
+    [self releaseQueue];
+    [self deleteRecordFile];
     BOOL success = [recorder startRecording];
     if (success) {
         NSLog(@"开始录音");
         [self createEncodeOperation];
         [opetaionQueue addOperation:encodeOperation];
     }else {
-        [self breaekRecord];
+        [self breakRecord];
         //可能是权限问题 具体不清楚 PERMISSION_ERROR = 10
         //也有可能是麦克风被占用？RECORD_HAS_USED = 20
         [self notifyRecordError:20];
@@ -54,18 +54,19 @@
 }
 
 -(void)createEncodeOperation {
+    
     encodeOperation = [[Mp3EncodeOperation alloc] init];
     encodeOperation.currentMp3File = self.currentMp3File;
     encodeOperation.onRecordError = self.onRecordError;
     encodeOperation.recordQueue = recordingQueue;
+    lastMp3File = self.currentMp3File;
 }
 
--(void)breaekRecord {
+-(void)breakRecord {
+    
     [recorder stopRecording];
-    if (encodeOperation) {
-        [encodeOperation removeCurrentMp3File];
-        [self releaseQueue];
-    }
+    [self releaseQueue];
+    [self deleteRecordFile];
 }
 
 
@@ -75,8 +76,8 @@
 }
 
 - (void)stop {
+    lastMp3File = nil;
     [recorder stopRecording];
-    encodeOperation.setToStopped = YES;
     [self releaseQueue];
 }
 
@@ -87,8 +88,22 @@
 - (void)releaseQueue {
     [recordingQueue removeAllObjects];
     if (encodeOperation) {
+        encodeOperation.setToStopped = YES;
         encodeOperation = nil;
     }
+  
 }
+
+
+///删除上次遗留的录音文件
+///可能是重新开始录音
+-(void)deleteRecordFile {
+    if(lastMp3File){
+       [[NSFileManager defaultManager] removeItemAtPath:_currentMp3File error:nil];
+        lastMp3File = nil;
+        NSLog(@"删除录音文件");
+    }
+}
+
 
 @end

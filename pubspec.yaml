@@ -1,7 +1,7 @@
 name: record_mp3
 description: Record an MP3 using the Platform native API，You can start ,pause,resume and stop record,And export an MP3 file.
-version: 1.0.0+1
-author: shingohu<shingohu@163.com>
+version: 1.0.1
+author: shingohu <shingohu@163.com>
 homepage: https://github.com/shingohu/flutter_record_mp3
 
 environment:

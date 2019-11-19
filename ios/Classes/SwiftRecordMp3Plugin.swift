@@ -45,6 +45,7 @@ public class SwiftRecordMp3Plugin: NSObject, FlutterPlugin {
             pauseRecord()
         }
         
+    
         
     }
     
@@ -70,7 +71,7 @@ public class SwiftRecordMp3Plugin: NSObject, FlutterPlugin {
         mp3client?.resume()
     }
     
-    //停止
+    //停止录音,并输出录音文件
     private func stopRecord() {
         mp3client?.stop()
     }
@@ -80,5 +81,6 @@ public class SwiftRecordMp3Plugin: NSObject, FlutterPlugin {
         mp3client?.pause()
     }
     
+   
     
 }

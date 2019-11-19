@@ -172,14 +172,14 @@ public class MP3Recorder {
                         }
                     }
                 } catch (FileNotFoundException e) {
-                    Log.e("record", "找不到录音文件");
+                    Log.e("RecordMp3", "Can not find record file");
                     postHandler(RecordMsg.MSG_FILE_NOT_FOUNT);
                 } catch (IllegalStateException |
                         IllegalArgumentException e) {
-                    Log.e("record", "没有录音权限");
+                    Log.e("RecordMp3", "NO Record Permission");
                     postHandler(RecordMsg.MSG_PERMISSION_ERROR);
                 } catch (Exception e) {
-                    Log.e("record", e + "");
+                    Log.e("RecordMp3", e + "");
                     postHandler(RecordMsg.MSG_IO_EXCEPTION);
                 } finally {
                     release();
@@ -338,7 +338,7 @@ public class MP3Recorder {
 
     private void setStatus(RecordStatus status) {
         this.status = status;
-        Log.d("Record", "status = " + status);
+        Log.d("RecordMp3", "status = " + status);
         postStatusHandler(status);
     }
 

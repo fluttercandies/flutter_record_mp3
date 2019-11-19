@@ -24,7 +24,7 @@ class RecordMp3 {
   ///record fail handler from native
   Future<dynamic> _methodCallHandler(MethodCall call) async {
     if (call.method == "onRecordError") {
-      _status = RecordStatus.ERROR;
+      _status = RecordStatus.IDEL;
       if (_onRecordError != null) {
         int errorCode = call.arguments;
         RecordErrorType type = RecordErrorType.UNKNOW_ERROR;
@@ -37,13 +37,13 @@ class RecordMp3 {
         } else if (errorCode == 20) {
           type = RecordErrorType.RECORD_HAS_USED;
         }
-        _onRecordError(type);
+        _onRecordError?.call(type);
       }
     }
   }
 
   ///start record
-  bool start(String path, Function onRecordError) {
+  bool start(String path, Function(RecordErrorType) onRecordError) {
     _onRecordError = onRecordError;
     _status = RecordStatus.RECORDING;
     _channel.invokeMethod("start", {'path': path});
@@ -60,11 +60,11 @@ class RecordMp3 {
     return false;
   }
 
-  ///stop record
+  ///stop record and export a record file
   bool stop() {
     if (_status == RecordStatus.RECORDING || _status == RecordStatus.PAUSE) {
       _onRecordError = null;
-      _status = RecordStatus.COMPLETE;
+      _status = RecordStatus.IDEL;
       _channel.invokeMethod("stop");
       return true;
     }
@@ -87,8 +87,8 @@ enum RecordStatus {
   IDEL,
   RECORDING,
   PAUSE,
-  COMPLETE,
-  ERROR,
+  // COMPLETE,
+  // ERROR,
 }
 
 //record fail type
