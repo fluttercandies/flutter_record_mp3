@@ -8,6 +8,8 @@ import com.plugin.record_mp3.record.port.RecordListener;
 import java.io.File;
 
 import io.flutter.Log;
+import io.flutter.embedding.engine.plugins.FlutterPlugin;
+import io.flutter.plugin.common.BinaryMessenger;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
@@ -17,10 +19,9 @@ import io.flutter.plugin.common.PluginRegistry.Registrar;
 /**
  * RecordMp3Plugin
  */
-public class RecordMp3Plugin implements MethodCallHandler {
+public class RecordMp3Plugin implements MethodCallHandler, FlutterPlugin {
 
     private MethodChannel methodChannel;
-
     private MP3Recorder recorder;
     private RecordListener listener;
 
@@ -28,7 +29,9 @@ public class RecordMp3Plugin implements MethodCallHandler {
      * Plugin registration.
      */
     public static void registerWith(Registrar registrar) {
-        final RecordMp3Plugin plugin = new RecordMp3Plugin(registrar);
+        final RecordMp3Plugin plugin = new RecordMp3Plugin();
+        plugin.init(registrar.messenger());
+
     }
 
     @Override
@@ -50,8 +53,8 @@ public class RecordMp3Plugin implements MethodCallHandler {
         }
     }
 
-    private RecordMp3Plugin(Registrar registrar) {
-        methodChannel = new MethodChannel(registrar.messenger(), "record_mp3");
+    private void init(BinaryMessenger messenger) {
+        methodChannel = new MethodChannel(messenger, "record_mp3");
         methodChannel.setMethodCallHandler(this);
 
         this.listener = new RecordListener() {
@@ -61,27 +64,27 @@ public class RecordMp3Plugin implements MethodCallHandler {
 
             @Override
             public void onFileNotFound() {
-                onErrorCallBack(RecordMsg.MSG_FILE_NOT_FOUNT, "无法创建录音文件,请查看权限及存储空间");
+                onErrorCallBack(RecordMsg.MSG_FILE_NOT_FOUNT, "FILE NOT FOUNT");
             }
 
             @Override
             public void onPermissionError() {
-                onErrorCallBack(RecordMsg.MSG_PERMISSION_ERROR, "请允许麦克风权限");
+                onErrorCallBack(RecordMsg.MSG_PERMISSION_ERROR, "mic permission error");
             }
 
             @Override
             public void onComplete() {
-                System.out.println("录音完成");
+                System.out.println("record complete");
             }
 
             @Override
             public void onIOExecption() {
-                onErrorCallBack(RecordMsg.MSG_IO_EXCEPTION, "无法读写录音文件,请查看存储空间");
+                onErrorCallBack(RecordMsg.MSG_IO_EXCEPTION, "IO_EXCEPTION");
             }
 
             @Override
             public void onRecordMayUsed() {
-                onErrorCallBack(RecordMsg.MSG_RECORD_HAS_USED, "麦克风没有声音,请检查麦克风是否正被其它应用使用或者未开启录音权限");
+                onErrorCallBack(RecordMsg.MSG_RECORD_HAS_USED, "RECORD_HAS_USED");
             }
         };
     }
@@ -138,5 +141,22 @@ public class RecordMp3Plugin implements MethodCallHandler {
             public void notImplemented() {
             }
         });
+    }
+
+    @Override
+    public void onAttachedToEngine(FlutterPluginBinding binding) {
+        init(binding.getBinaryMessenger());
+    }
+
+    @Override
+    public void onDetachedFromEngine(FlutterPluginBinding binding) {
+        if (methodChannel != null) {
+            methodChannel.setMethodCallHandler(null);
+            methodChannel = null;
+        }
+        if (recorder != null) {
+            recorder.breakRecord();
+            recorder = null;
+        }
     }
 }

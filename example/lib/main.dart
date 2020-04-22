@@ -3,8 +3,8 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:path_provider/path_provider.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:record_mp3/record_mp3.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 void main() => runApp(MyApp());
 
@@ -102,7 +102,7 @@ class _MyAppState extends State<MyApp> {
               height: 50,
               child: isComplete && recordFilePath != null
                   ? Text(
-                      "播放",
+                      "play",
                       style: TextStyle(color: Colors.red, fontSize: 20),
                     )
                   : Container(),
@@ -114,25 +114,27 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<bool> checkPermission() async {
-    Map<PermissionGroup, PermissionStatus> map = await new PermissionHandler()
-        .requestPermissions(
-            [PermissionGroup.storage, PermissionGroup.microphone]);
-    print(map[PermissionGroup.microphone]);
-    return map[PermissionGroup.microphone] == PermissionStatus.granted;
+    if (!await Permission.microphone.isGranted) {
+      PermissionStatus status = await Permission.microphone.request();
+      if (status != PermissionStatus.granted) {
+        return false;
+      }
+    }
+    return true;
   }
 
   void startRecord() async {
     bool hasPermission = await checkPermission();
     if (hasPermission) {
-      statusText = "正在录音中...";
+      statusText = "Recording...";
       recordFilePath = await getFilePath();
       isComplete = false;
       RecordMp3.instance.start(recordFilePath, (type) {
-        statusText = "录音失败--->$type";
+        statusText = "Record error--->$type";
         setState(() {});
       });
     } else {
-      statusText = "没有录音权限";
+      statusText = "No microphone permission";
     }
     setState(() {});
   }
@@ -141,13 +143,13 @@ class _MyAppState extends State<MyApp> {
     if (RecordMp3.instance.status == RecordStatus.PAUSE) {
       bool s = RecordMp3.instance.resume();
       if (s) {
-        statusText = "正在录音中...";
+        statusText = "Recording...";
         setState(() {});
       }
     } else {
       bool s = RecordMp3.instance.pause();
       if (s) {
-        statusText = "录音暂停中...";
+        statusText = "Recording pause...";
         setState(() {});
       }
     }
@@ -156,7 +158,7 @@ class _MyAppState extends State<MyApp> {
   void stopRecord() {
     bool s = RecordMp3.instance.stop();
     if (s) {
-      statusText = "录音已完成";
+      statusText = "Record complete";
       isComplete = true;
       setState(() {});
     }
@@ -165,7 +167,7 @@ class _MyAppState extends State<MyApp> {
   void resumeRecord() {
     bool s = RecordMp3.instance.resume();
     if (s) {
-      statusText = "正在录音中...";
+      statusText = "Recording...";
       setState(() {});
     }
   }
