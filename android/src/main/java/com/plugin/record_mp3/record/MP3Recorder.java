@@ -287,7 +287,7 @@ public class MP3Recorder {
      * 完成并输出录音文件
      */
     public void stop() {
-        if (getStatus() == RecordStatus.START || getStatus() == RecordStatus.PAUSE) {
+        if (getStatus() == RecordStatus.START || getStatus() == RecordStatus.PAUSE || getStatus() == RecordStatus.RESUME) {
             setStatus(RecordStatus.STOP);
             setRecording(false);
         }
@@ -323,7 +323,7 @@ public class MP3Recorder {
      * 暂停
      */
     public void pause() {
-        if (getStatus() == RecordStatus.START)
+        if (getStatus() == RecordStatus.START || getStatus() == RecordStatus.RESUME)
             setStatus(RecordStatus.PAUSE);
     }
 
