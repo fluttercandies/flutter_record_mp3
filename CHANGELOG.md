@@ -1,4 +1,8 @@
 
+## 2.1.0
+* Fixed a recording bug on Android
+* Specify swift version 5.0
+
 ## 2.0.0
 * Support Flutter 1.12.x
 
