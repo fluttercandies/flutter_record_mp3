@@ -19,6 +19,14 @@ dependencies:
   record_mp3: ^2.1.0
 ```
 
+```
+Flutter >=2.0.0 nullsafety
+dependencies:
+  record_mp3: 
+  	git:
+	 url:git://github.com/fluttercandies/flutter_record_mp3
+```
+
 
 ## Usage
  
