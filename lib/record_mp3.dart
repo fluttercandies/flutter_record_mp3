@@ -11,10 +11,10 @@ class RecordMp3 {
 
   RecordStatus get status => _status;
 
-  MethodChannel _channel;
+  late MethodChannel _channel;
 
   ///record fail callback
-  Function(RecordErrorType) _onRecordError;
+  Function(RecordErrorType)? _onRecordError;
 
   RecordMp3._() {
     _channel = const MethodChannel('record_mp3');

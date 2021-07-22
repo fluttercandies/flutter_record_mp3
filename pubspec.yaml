@@ -5,8 +5,8 @@ author: shingohu <shingohu@163.com>
 homepage: https://github.com/shingohu/flutter_record_mp3
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
-  flutter: ">=1.10.0 <2.0.0"
+  sdk: ">=2.12.0 <3.0.0"
+  flutter: ">=2.0.0 <3.0.0"
 
 dependencies:
   flutter:
