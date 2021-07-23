@@ -1,3 +1,6 @@
+## 3.0.0
+* nullsafety support
+
 
 ## 2.1.0
 * Fixed a recording bug on Android
