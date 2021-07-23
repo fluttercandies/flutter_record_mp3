@@ -14,7 +14,7 @@ dependencies:
 
 
 ```
-Flutter >=1.12.x
+Flutter >=1.12.x  <2.0.0
 dependencies:
   record_mp3: ^2.1.0
 ```
@@ -25,6 +25,10 @@ dependencies:
   record_mp3: 
   	git:
 	 url:git://github.com/fluttercandies/flutter_record_mp3
+
+dependencies:
+  record_mp3: ^3.0.0
+
 ```
 
 
