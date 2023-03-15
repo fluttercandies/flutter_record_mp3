@@ -129,7 +129,7 @@ class _MyAppState extends State<MyApp> {
       statusText = "Recording...";
       recordFilePath = await getFilePath();
       isComplete = false;
-      RecordMp3.instance.start(recordFilePath, (type) {
+      RecordMp3.instance.start(recordFilePath!, (type) {
         statusText = "Record error--->$type";
         setState(() {});
       });
@@ -172,12 +172,12 @@ class _MyAppState extends State<MyApp> {
     }
   }
 
-  String recordFilePath;
+  String? recordFilePath;
 
   void play() {
-    if (recordFilePath != null && File(recordFilePath).existsSync()) {
+    if (recordFilePath != null && File(recordFilePath!).existsSync()) {
       AudioPlayer audioPlayer = AudioPlayer();
-      audioPlayer.play(recordFilePath, isLocal: true);
+      audioPlayer.play(UrlSource(recordFilePath!));
     }
   }
 
